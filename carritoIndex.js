@@ -35,7 +35,6 @@ const carritoIndex = (productoId)=>{
                 const indice = carritoDeCompras.findIndex(element => element.id === producto.id)
                 carritoDeCompras.splice (indice,1)
                 divElement.remove()
-                /* eliminarCarrito.remove() */
             })
 
         } )
@@ -49,11 +48,4 @@ const carritoIndex = (productoId)=>{
    
 } 
 
-
-/* const eliminarDelCarrito = (productoId) => {
-        const producto = carritoDeCompras.find((producto) => producto.id === productoId )
-        const indice = carritoDeCompras.indexOf (item)
-        carritoDeCompras.splice (indice, 1)
-        renderProductosCarrito()
-    } */
 
