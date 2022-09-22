@@ -5,17 +5,29 @@ const carritoIndex = (productoId)=>{
     const contenedorCarrito = document.getElementById("carrito-contenedor")
 
     const renderProductosCarrito = ()=> {
-        
-        let producto  = productos.find( producto => producto.id == productoId )
+
+       /*  const existe = carritoDeCompras.some (producto => producto.id === productoId)
+           if (existe){
+            const producto = carritoDeCompras.map (producto =>{
+                if (producto.id === productoId){
+                    producto.cantidad++
+                }
+            })
+           } 
+        else {
+            let producto  = productos.find((producto) => producto.id === productoId )
         carritoDeCompras.push(producto)
-
         console.log(carritoDeCompras);
-
         producto.cantidad = 1
-      
+        contenedorCarrito.innerHTML = ""
+        }   */
+        
+        let producto  = productos.find((producto) => producto.id === productoId )
+        carritoDeCompras.push(producto)
+        console.log(carritoDeCompras);
+        producto.cantidad = 1
         contenedorCarrito.innerHTML = ""
 
-        
         carritoDeCompras.forEach ((producto) => {
             let div = document.createElement("div")
             div.classList.add("productoEnCarrito")
@@ -27,6 +39,15 @@ const carritoIndex = (productoId)=>{
                         <button id="${producto.id}" class="boton-eliminar"><i class="fa-solid fa-trash-can"></i></button>`;
         contenedorCarrito.appendChild(div)
 
+        localStorage.setItem('carritoDeCompras', JSON.stringify(carritoDeCompras))
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('carritoDeCompras')){
+                carritoDeCompras = JSON.parse(localStorage.getItem("carritoDeCompras"))
+               /*  renderProductosCarrito() */
+            }
+        })
+
          const eliminarCarrito = document.getElementById(producto.id)
          const divElement = document.getElementById(`div-${producto.id}`)
 
@@ -36,6 +57,8 @@ const carritoIndex = (productoId)=>{
                 carritoDeCompras.splice (indice,1)
                 divElement.remove()
             })
+
+        contadorCarrito.innerText = carritoDeCompras.length
 
         } )
        
