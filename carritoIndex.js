@@ -25,7 +25,7 @@ const carritoIndex = (productoId)=>{
         let producto  = productos.find((producto) => producto.id === productoId )
         carritoDeCompras.push(producto)
         console.log(carritoDeCompras);
-        producto.cantidad = 1
+        producto.cantidad = 1;
         contenedorCarrito.innerHTML = ""
 
         carritoDeCompras.forEach ((producto) => {
@@ -35,8 +35,8 @@ const carritoIndex = (productoId)=>{
 
             div.innerHTML = `<p>${producto.nombre}</p>
                         <p>Precio: ${producto.precio}</p> 
-                        <p id="cantidad${producto.id}">Cantidad: ${producto.cantidad}</p>
-                        <button id="${producto.id}" class="boton-eliminar"><i class="fa-solid fa-trash-can"></i></button>`;
+                        <p id="cantidad${producto.id}">Cantidad:${producto.cantidad}</p>
+                        <button id="${producto.id}"class="boton-eliminar"><i class="fa-solid fa-trash-can"></i></button>`;
         contenedorCarrito.appendChild(div)
 
         localStorage.setItem('carritoDeCompras', JSON.stringify(carritoDeCompras))
@@ -55,9 +55,8 @@ const carritoIndex = (productoId)=>{
             eliminarCarrito.addEventListener("click", (e)=>{
                 const indice = carritoDeCompras.findIndex(element => element.id === producto.id)
                 carritoDeCompras.splice (indice,1)
-                divElement.remove()
+                divElement.remove(1)
             })
-
         contadorCarrito.innerText = carritoDeCompras.length
 
         } )

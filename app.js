@@ -28,8 +28,7 @@ const mostrarProductos = (productos) => {
                   color: 'rgba(6, 230, 159, 0.993)',
                   background: '#161515',  
                   confirmButtonText: "Continuar",
-                  border: '#545454',
-                 
+            
                 });
              
             /* alert(`Se agrego el producto ${producto.nombre}`) */
